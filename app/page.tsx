@@ -50,7 +50,7 @@ export default function Home() {
       <main className="mx-auto max-w-4xl px-4 py-8 sm:px-6">
         <header className="mb-8">
           <h1 className="text-3xl font-bold tracking-tight text-zinc-900 dark:text-zinc-100">
-            AutoStock Thailand
+            AutoStock Thailand SET
           </h1>
           <p className="mt-1 text-zinc-600 dark:text-zinc-400">
             Real-time SET stock prices with technical analysis for buy/sell decisions
