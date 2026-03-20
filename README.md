@@ -1,36 +1,55 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# AutoStock Thailand
 
-## Getting Started
+Thailand SET stock analysis app with real-time prices, technical indicators, and buy/sell recommendations.
 
-First, run the development server:
+## Features
+
+- **Live price data** – Current price and daily change for Thailand stocks
+- **Price chart** – 6-month history with SMA 20 and SMA 50
+- **Technical indicators** – RSI, MACD, Moving Averages
+- **Buy/Sell recommendation** – Score-based suggestion (BUY / SELL / HOLD)
+
+## Data Sources
+
+### Current & Historical Price Data
+
+- **Yahoo Finance** – Used for both current and historical prices
+  - Thai stocks use `.BK` suffix (e.g. AOT.BK, PTT.BK)
+  - API: `https://query1.finance.yahoo.com/v8/finance/chart/[SYMBOL].BK`
+  - Provides 6 months of daily OHLCV data
+
+### SET Website Reference
+
+- **SET Official** – For reference and verification
+  - URL: https://www.set.or.th/th/market/product/stock/quote/[ชื่อหุ้น]/price
+  - Example: https://www.set.or.th/th/market/product/stock/quote/AOT/price
+
+### Why Yahoo Finance?
+
+The SET official API (SMART Marketplace) requires a paid subscription (5,000–15,000 THB/month). Yahoo Finance offers free historical data for Thai stocks and is widely used for this purpose.
+
+## Technical Analysis Formulas
+
+| Indicator | Formula | Buy Signal | Sell Signal |
+|-----------|---------|------------|-------------|
+| **RSI (14)** | Relative Strength Index | RSI < 30 (oversold) | RSI > 70 (overbought) |
+| **SMA 20/50** | Simple Moving Average | Price > SMA20, SMA20 > SMA50 | Price < SMA20, SMA20 < SMA50 |
+| **MACD** | 12, 26, 9 EMA crossover | Histogram > 0 | Histogram < 0 |
+
+## Run Locally
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000).
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Popular Symbols
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+AOT, PTT, BBL, CPALL, ADVANC, SCB, KBANK, PTTEP, TOP
 
-## Learn More
+---
 
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+*For educational purposes only. Not financial advice.*
+# autostock
