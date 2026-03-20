@@ -4,10 +4,12 @@ import { useState } from "react";
 import { StockChart } from "@/components/StockChart";
 import { StockAnalysis } from "@/components/StockAnalysis";
 import { analyzeStock } from "@/lib/indicators";
+import { Analytics } from "@vercel/analytics/next"
+import { SpeedInsights } from "@vercel/speed-insights/next"
 
 const POPULAR_SYMBOLS = ["BDMS",  "BEM", "PTT", "BBL", "CPALL", "ADVANC", "SCB", "KBANK", "PTTEP"];
 
-export default function Home() {
+function Home() {
   const [searchInput, setSearchInput] = useState("");
   const [data, setData] = useState<{
     symbol: string;
@@ -149,3 +151,15 @@ export default function Home() {
     </div>
   );
 }
+
+function Page() {
+  return (
+    <>
+      <Home />
+      <Analytics />
+      <SpeedInsights />
+    </>
+  )
+}
+
+export default Page;
